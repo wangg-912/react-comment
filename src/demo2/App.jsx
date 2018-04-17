@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import AppInput from "./AppInput";
 import AppItem from "./AppItem";
 import AppClock from "./AppClock";
 
@@ -28,6 +28,8 @@ export default class App extends Component{
         return(
             <div className="app">
                 <button onClick={this.handlerClick.bind(this)}>{this.state.isShow?"隐藏":"显示"}</button>
+                <br/>
+                <AppInput />
                 <hr/>
                 {this.state.isShow?<AppClock />:null}
                 <hr/>
