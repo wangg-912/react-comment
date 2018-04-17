@@ -1,7 +1,8 @@
+
 #探究react组件的挂在周期
 
-1、组件挂载之前触发componentWillMount；
+1、组件挂载之前触发componentWillMount，这里组件挂载之前可以做一些操作，比如说定时器，AJax的拉取；
 
 2、组件挂载之后触发componentDidMount；
 
-3、组件被销毁的时候可以使用componentWillUnmount来监听；
+3、组件被销毁的时候可以使用componentWillUnmount来监听，组件销毁时可以做一些定时器的销毁等等..；

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import AppItem from "./AppItem";
+import AppClock from "./AppClock";
 
 export default class App extends Component{
     constructor(){
@@ -21,14 +22,14 @@ export default class App extends Component{
     componentDidMount() {
         console.log("渲染之后");
     }
-    componentWillUnmount() {
-        console.log("组件被销毁");
-    }
+    
     
     render(){
         return(
             <div className="app">
                 <button onClick={this.handlerClick.bind(this)}>{this.state.isShow?"隐藏":"显示"}</button>
+                <hr/>
+                {this.state.isShow?<AppClock />:null}
                 <hr/>
                 {this.state.isShow?<AppItem />:null}
             </div>
