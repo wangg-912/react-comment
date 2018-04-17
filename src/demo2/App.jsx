@@ -31,7 +31,7 @@ export default class App extends Component{
                 <hr/>
                 {this.state.isShow?<AppClock />:null}
                 <hr/>
-                {this.state.isShow?<AppItem />:null}
+                <AppItem type={this.state.isShow} />
             </div>
         )
     }
