@@ -1,0 +1,53 @@
+@a:#000;
+@bg:#fff;
+@rauids:3px;
+body{
+    background: @bg
+}
+#container{
+    color: @a;
+    div{
+        span{
+            list-style: none;
+            height:30px;
+            line-height: 30px;
+        }
+    }
+    .comment-app{
+        width: 600px;
+        height: auto;
+        border: 1px solid #f1f1f1;
+
+        .comment-input{
+            width: 100%;
+            height: 200px;
+            box-shadow: 0 0 3px 3px #cccccc;
+            .comment-field{
+                height: 40px;
+                padding: 10px;
+                .comment-field-name{
+                    min-width: 90px;
+                }
+                .comment-field-name,.comment-field-input{
+                    display: inline-flex;
+                    width: auto;
+                    line-height: 4px;
+                    @inputwidth:220px;
+                    @inputheight:28px;
+                    @textarea:60px;
+                    input,textarea{
+                        width: @inputwidth;
+                        height: @inputheight;
+                        border: 1px solid #868686;
+                        border-radius: @rauids;
+                    }
+                    textarea{
+                        height:@textarea;
+
+                    }
+                }
+            }
+        }
+    }
+
+}
