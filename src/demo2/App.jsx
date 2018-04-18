@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppInput from "./AppInput";
 import AppItem from "./AppItem";
 import AppClock from "./AppClock";
+import AppChildren from "./AppChildren";
 
 export default class App extends Component{
     constructor(){
@@ -28,8 +29,14 @@ export default class App extends Component{
         return(
             <div className="app">
                 <button onClick={this.handlerClick.bind(this)}>{this.state.isShow?"隐藏":"显示"}</button>
-                <br/>
+                <hr/>
                 <AppInput />
+                <hr/>
+                <AppChildren>
+                    <p>我是第一队数据！</p>
+                    <p>我是第二队数据！</p>
+                    <p>我是第三队数据！</p>
+                </AppChildren>
                 <hr/>
                 {this.state.isShow?<AppClock />:null}
                 <hr/>
