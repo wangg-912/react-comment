@@ -6,11 +6,27 @@ import CommentList from "./CommentList";
 
 
 export default class CommentApp extends Component{
+    
+    componentWillMount() {
+        this._loadComments();
+    }
+    _loadComments(){
+        const comments = localStorage.getItem("comments");
+        if(comments){
+            const _comments = JSON.parse(comments);
+            this.setState({
+                commentList:_comments
+            })
+        }
+    }
     constructor(){
         super();
         this.state = {
             commentList:[]
         };
+    }
+    _saveComments(comments){
+        localStorage.setItem("comments",JSON.stringify(comments))
     }
     handleSubmitComment(param){
         if (!param) return
@@ -20,6 +36,7 @@ export default class CommentApp extends Component{
         this.setState({
             commentList:this.state.commentList
         })
+        this._saveComments(this.state.commentList)
     }
     render(){
         return(
