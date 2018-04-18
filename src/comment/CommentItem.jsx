@@ -21,6 +21,11 @@ class CommentItem extends Component{
             })
         }
     }
+    handerCommentDelete(){
+         if(this.props.onDeleteComment){
+            this.props.onDeleteComment(this.props.key)
+         }
+    }
     render(){
         return(
             <div className="comment-item">
@@ -28,7 +33,12 @@ class CommentItem extends Component{
                     <span className="item-name">{this.props.user.username}:</span>
                     <span className="item-content">{this.props.user.content}</span>
                 </div>
-               <div className="comment-item-right">{this.state.timeString}</div>
+               <div className="comment-item-right">
+                    <span style={{paddingRight:'10px'}}>{this.state.timeString}</span>
+                    <span>
+                        <button onClick={this.handerCommentDelete.bind(this)} style={{display:"block",float:'right'}}>删除</button>
+                    </span>
+               </div>
             </div>
         )
     }
