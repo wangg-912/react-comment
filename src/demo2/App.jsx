@@ -3,6 +3,7 @@ import AppInput from "./AppInput";
 import AppItem from "./AppItem";
 import AppClock from "./AppClock";
 import AppChildren from "./AppChildren";
+import AppSetHtml from "./AppSetHtml";
 
 export default class App extends Component{
     constructor(){
@@ -37,6 +38,8 @@ export default class App extends Component{
                     <p>我是第二队数据！</p>
                     <p>我是第三队数据！</p>
                 </AppChildren>
+                <hr/>
+                <AppSetHtml />
                 <hr/>
                 {this.state.isShow?<AppClock />:null}
                 <hr/>
