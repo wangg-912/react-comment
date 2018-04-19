@@ -1,8 +1,4 @@
-import React,{ Component } from 'react';
-import {render} from "react-dom";
-
-import CommentApp from "./comment/CommentApp";
-import "./css/base.less";
-render( <CommentApp />, document.querySelector("#container"))
-
-
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import Container from './context/Container';
+render(<Container />,document.querySelector("#container"));
