@@ -4,7 +4,6 @@ import { render } from 'react-dom';
 import CommentInput from "./CommentInput";
 import CommentList from "./CommentList";
 
-
 export default class CommentApp extends Component{
     
     componentWillMount() {
