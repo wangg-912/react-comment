@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import CommentItem from "./CommentItem";
 
 export default class CommentList extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
     }
     handlerDeleteComment(index){
         if(this.props.onDeleteComment){
@@ -13,7 +13,9 @@ export default class CommentList extends Component{
     render(){
         return(
             <div className="comment-list">
-            {this.props.commentList.map((user,i)=><CommentItem onDeleteComment={this.handlerDeleteComment.bind(this)}  key ={i} user = {user}  />)}
+            {this.props.comments.map((user,i)=>{
+                return <CommentItem onDeleteComment={this.handlerDeleteComment.bind(this)}  key ={i} user = {user}  />
+            })}
             </div>
         )
     }

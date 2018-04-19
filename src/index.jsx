@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React,{ Component } from 'react';
+import {render} from "react-dom";
 
-import App from "./heighOrderComponent/App";
+import CommentApp from "./comment/CommentApp";
+import "./css/base.less";
+render( <CommentApp />, document.querySelector("#container"))
 
 
-render(<App />, document.querySelector("#container"));
