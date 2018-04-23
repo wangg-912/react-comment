@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import SelectList from "./SelectList";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -16,13 +15,11 @@ class Container extends Component{
     componentDidMount() {
         this.getChildContext();
     }
-    handlerChangeOption(event){
-        
+    handlerChangeOption(color){
         this.setState({
-            themeColor:event.target.value
+            themeColor:color
         })
     }
-    
     getChildContext () {
         return { themeColor: this.state.themeColor }
     }
@@ -34,13 +31,8 @@ class Container extends Component{
         ]
         return(
             <div>
-                <div>
-                    <select ref={(select)=>this.select = select} defaultValue={this.state.themeColor} onChange={this.handlerChangeOption.bind(this)}>
-                        {colors.map((color,i) => <SelectList key={i} list={color} />)}
-                    </select>
-                </div>
                 <Header />
-                <Main />
+                <Main colors={colors} themeColor={this.state.themeColor} onChangeColor={this.handlerChangeOption.bind(this)} />
                 <Footer />
             </div>
         )
