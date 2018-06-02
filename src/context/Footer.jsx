@@ -6,7 +6,7 @@ class Footer extends Component{
         return(
             <footer>
                 <h5 style={{color:this.context.themeColor}}>Footer</h5>
-                <p style={{color:this.context.themeColor}}>底部</p>
+                <p style={{color:this.context.themeColor}}>底部123456</p>
             </footer>
         )
     }

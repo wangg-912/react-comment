@@ -51,7 +51,7 @@ module.exports = {
     mode: 'development',
     plugins:[
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title:"react",
             template:"./src/tpl/container.html",
@@ -61,5 +61,10 @@ module.exports = {
             url:"http:/localhost:4343"
         }),
         new ExtractTextPlugin("style.css")
-    ]
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        hot: true // 新增
+    }
 }

@@ -15,12 +15,18 @@ class App extends Component{
         switch(action.type){
             case 'UPDATE_TITLE_TEXT':
             appState.title.text = action.text
-            break
+            break;
           case 'UPDATE_TITLE_COLOR':
             appState.title.color = action.color
-            break
+            break;
+            case 'UPDATE_CONTENT_TEXT':
+            appState.content.text = action.text
+            break;
+          case 'UPDATE_CONTENT_COLOR':
+            appState.content.color = action.color
+            break;
           default:
-            break
+            break;
         }
     }
     // 渲染头部
@@ -38,11 +44,17 @@ class App extends Component{
         this.renderTitle(appState.title);
         this.renderContainer(appState.content);
     }
-    
+    // 组件加载完毕
     componentDidMount() {
         this.renderApp(appState);
+        
+    }
+    componentDidUpdate(){
         this.dispatch({ type: 'UPDATE_TITLE_TEXT', text: '更改后的头部！' }) // 修改标题文本
         this.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'green' }) // 修改标题颜色
+
+        this.dispatch({ type: 'UPDATE_CONTENT_TEXT', text: '更改后的身体！' }) // 修改主体文本
+        this.dispatch({ type: 'UPDATE_CONTENT_COLOR', color: 'red' }) // 修改主体颜色
         this.renderApp(appState); // 把新的数据渲染到页面上
     }
     render(){
