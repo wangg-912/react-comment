@@ -34,7 +34,6 @@ class CommentApp extends Component{
         this.props.saveData(this.state.comments)
     }
     render(){
-        console.log(this.state.comments)
         return(
             <div className="comment-app">
                 <CommentInput onSubmit={this.handleSubmitComment.bind(this)} />
