@@ -68,20 +68,19 @@ class App extends Component{
     constructor(){
         super();
     }
-   
    renderApp(appState, oldState={}){
        if(appState === oldState) return
-       console.log("app loading...")
+       //console.log("app loading...")
         this.renderTitle(appState.title);
         this.renderContent(appState.content);
    }
    renderTitle(opts){
-        console.log("title loading...")
+        //console.log("title loading...")
         this.title.innerHTML = opts.text;
         this.title.style.color = opts.color;
    }
    renderContent(opts){
-        console.log("content loading...")
+        //console.log("content loading...")
         this.content.innerHTML = opts.text;
         this.content.style.color = opts.color;
    }
