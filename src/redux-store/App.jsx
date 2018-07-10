@@ -75,7 +75,7 @@ class App extends Component{
         this.renderContent(appState.content);
    }
    renderTitle(opts){
-        console.log("title loading...")
+        //console.log("title loading...")
         this.title.innerHTML = opts.text;
         this.title.style.color = opts.color;
    }
