@@ -6,7 +6,7 @@ let appState = {
         "color":"red"
     },
     "content":{
-        "text":"我是正文1",
+        "text":"我是正文",
         color:"black"
     }
 }
@@ -15,20 +15,40 @@ let appState = {
 //     const dispatch = (action)=> stateChanger(state,action);
 //     return {getState, dispatch}
 // }
-function stateChanger(action){
+function stateChanger(state,action){
     switch(action.type){
         case 'UPDATE_TITLE_TEXT':
-        appState.title.text = action.text
-        break;
+            return{
+                ...state,
+                title: {
+                ...state.title,
+                text: action.text
+                }
+            }
       case 'UPDATE_TITLE_COLOR':
-        appState.title.color = action.color
-        break;
+            return{
+                ...state,
+                title: {
+                ...state.title,
+                color: action.color
+                }
+            }
         case 'UPDATE_CONTENT_TEXT':
-        appState.content.text = action.text
-        break;
+            return{
+                ...state,
+                content: {
+                ...state.content,
+                text: action.text
+                }
+            }
       case 'UPDATE_CONTENT_COLOR':
-        appState.content.color = action.color
-        break;
+            return{
+                ...state,
+                content: {
+                ...state.content,
+                text: action.color
+                }
+            }
       default:
         break;
     }
@@ -38,7 +58,7 @@ function createStore (state, stateChanger) {
     const subscribe = (listener) => listeners.push(listener)
     const getState = () => state
     const dispatch = (action) => {
-      stateChanger(state, action)
+        state = stateChanger(state, action) // 覆盖原对象
       listeners.forEach((listener) => listener())
     }
     return { getState, dispatch, subscribe }
@@ -49,7 +69,8 @@ class App extends Component{
         super();
     }
    
-   renderApp(appState){
+   renderApp(appState, oldState={}){
+       if(appState === oldState) return
        console.log("app loading...")
         this.renderTitle(appState.title);
         this.renderContent(appState.content);
@@ -65,9 +86,13 @@ class App extends Component{
         this.content.style.color = opts.color;
    }
    componentDidMount(){
-       debugger;
         const store = createStore(appState, stateChanger);
-        store.subscribe(() => this.renderApp(store.getState()));
+        let oldState = store.getState();
+        store.subscribe(() => {
+            const newState = store.getState();
+            this.renderApp(newState,oldState);
+            oldState = newState;
+        });
         this.renderApp(store.getState());
         //this.renderApp(store.getState());
         store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: '123456' }) // 修改标题文本
