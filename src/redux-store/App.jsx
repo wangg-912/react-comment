@@ -1,68 +1,6 @@
 import React, { Component } from 'react';
-
-let appState = {
-    "title":{
-        "text":"我是头部",
-        "color":"red"
-    },
-    "content":{
-        "text":"我是正文",
-        color:"black"
-    }
-}
-// function createStore (state, stateChanger){
-//     const getState = ()=> state;
-//     const dispatch = (action)=> stateChanger(state,action);
-//     return {getState, dispatch}
-// }
-function stateChanger(state,action){
-    switch(action.type){
-        case 'UPDATE_TITLE_TEXT':
-            return{
-                ...state,
-                title: {
-                ...state.title,
-                text: action.text
-                }
-            }
-      case 'UPDATE_TITLE_COLOR':
-            return{
-                ...state,
-                title: {
-                ...state.title,
-                color: action.color
-                }
-            }
-        case 'UPDATE_CONTENT_TEXT':
-            return{
-                ...state,
-                content: {
-                ...state.content,
-                text: action.text
-                }
-            }
-      case 'UPDATE_CONTENT_COLOR':
-            return{
-                ...state,
-                content: {
-                ...state.content,
-                text: action.color
-                }
-            }
-      default:
-        break;
-    }
-}
-function createStore (state, stateChanger) {
-    const listeners = []
-    const subscribe = (listener) => listeners.push(listener)
-    const getState = () => state
-    const dispatch = (action) => {
-        state = stateChanger(state, action) // 覆盖原对象
-      listeners.forEach((listener) => listener())
-    }
-    return { getState, dispatch, subscribe }
-  }
+import {stateChanger} from "./Action"
+import {createStore} from "./store"
 
 class App extends Component{
     constructor(){
@@ -85,7 +23,7 @@ class App extends Component{
         this.content.style.color = opts.color;
    }
    componentDidMount(){
-        const store = createStore(appState, stateChanger);
+        const store = createStore(stateChanger);
         let oldState = store.getState();
         store.subscribe(() => {
             const newState = store.getState();
@@ -95,7 +33,7 @@ class App extends Component{
         this.renderApp(store.getState());
         //this.renderApp(store.getState());
         store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: '123456' }) // 修改标题文本
-        store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'blue' }) 
+        store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'gold' }) 
    }
    render(){
        return(
